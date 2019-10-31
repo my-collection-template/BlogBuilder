@@ -41,8 +41,8 @@ namespace BlogBuilder
             DatePath = Date.Year + "\\" + Date.Month + "\\" + Date.Day;  
             Directory.CreateDirectory(Config.BlogDirectory + "\\" + DatePath);
 
-            // Write the html file, create if doesn't exist and overwrite if it does
-            WebpageFileName = Title.ToLower().Trim().Replace(" ", "-").Replace("/", "-").Replace("\\", "-") + ".html";
+            // Write the webpage file, create if doesn't exist and overwrite if it does
+            WebpageFileName = Title.ToLower().Trim().Replace(" ", "-").Replace("/", "-").Replace("\\", "-") + Config.WebpageFileType;
             File.WriteAllText(Config.BlogDirectory + "\\" + DatePath + "\\" + WebpageFileName, htmlFile);
         }
     }

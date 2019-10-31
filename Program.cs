@@ -61,7 +61,7 @@ namespace BlogBuilder
                 b.PopulateTemplate();
                 articleCount++;                           
             }
-            Console.WriteLine("\tCONTENT LOADED AND HTML GENERATED FOR {0} BLOG ENTRIES", articleCount);            
+            Console.WriteLine("\tCONTENT LOADED AND WEBPAGE GENERATED FOR {0} BLOG ENTRIES", articleCount);            
 
             // Sort list of all blog entries with Linq
             BlogEntries = BlogEntries.OrderByDescending(x => x.Date).ToList();
@@ -107,7 +107,7 @@ namespace BlogBuilder
             string htmlFile = template.Replace(Config.PLACEHOLDER_BODY, indexBody);
 
             // Create the index file 
-            File.WriteAllText(Config.BlogDirectory + "/" + "index.html", htmlFile);
+            File.WriteAllText(Config.BlogDirectory + "/" + "index" + Config.WebpageFileType, htmlFile);
 
             Console.WriteLine("\tBlog index generated.");
 
