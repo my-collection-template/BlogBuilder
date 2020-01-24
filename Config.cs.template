@@ -8,7 +8,9 @@
         public const string PLACEHOLDER_DATE = "##DATE##";
         // The body placeholder tag to look for in the blog template
         public const string PLACEHOLDER_BODY = "##BODY##";
-
+        
+        // Webpage file type, with preceding '.' - i.e. ".html"
+        public const string WebpageFileType = ".html";
         // Link to the website your blog is hosted on
         public const string Website = "";
         // Path to the blog entry template file
