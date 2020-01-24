@@ -33,7 +33,7 @@ namespace BlogBuilder
         {
             // Populate the merge fields of the template file with the data values
             string template = File.ReadAllText(Config.BlogEntryTemplate);
-            string htmlFile = template.Replace(Config.PLACEHOLDER_TITLE, Title)
+            string webpageFile = template.Replace(Config.PLACEHOLDER_TITLE, Title)
                                       .Replace(Config.PLACEHOLDER_DATE, Date.ToString("dd-MM-yyyy"))
                                       .Replace(Config.PLACEHOLDER_BODY, BodyContent);
 
@@ -42,8 +42,8 @@ namespace BlogBuilder
             Directory.CreateDirectory(Config.BlogDirectory + "\\" + DatePath);
 
             // Write the webpage file, create if doesn't exist and overwrite if it does
-            WebpageFileName = Title.ToLower().Trim().Replace(" ", "-").Replace("/", "-").Replace("\\", "-") + Config.WebpageFileType;
-            File.WriteAllText(Config.BlogDirectory + "\\" + DatePath + "\\" + WebpageFileName, htmlFile);
+            WebpageFileName = Title.ToLower().Trim().Replace(" ", "-").Replace("/", "-").Replace("\\", "-").Replace(":", "").Replace("&", "-").Replace("$", "") + Config.WebpageFileType;
+            File.WriteAllText(Config.BlogDirectory + "\\" + DatePath + "\\" + WebpageFileName, webpageFile);
         }
     }
 }
