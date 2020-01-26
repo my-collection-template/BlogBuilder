@@ -5,7 +5,4 @@ BlogBuilder.csproj.user
 
 /data
 /web
-blog-entry-template.html
-blog-index-template.html
-blog-entry-template.php
-blog-index-template.php
+/blog
