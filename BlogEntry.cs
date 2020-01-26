@@ -22,11 +22,21 @@ namespace BlogBuilder
         private void StoreContent()
         {
             // Store values from the XML data file
-            XmlDocument doc = new XmlDocument();
-            doc.Load(DataPath);
-            Title = doc.DocumentElement.SelectSingleNode("/BlogEntry/Title").InnerText;
-            Date = DateTime.Parse(doc.DocumentElement.SelectSingleNode("/BlogEntry/Date").InnerText);
-            BodyContent = doc.DocumentElement.SelectSingleNode("/BlogEntry/BodyContent").InnerText;
+            try
+            {
+                XmlDocument doc = new XmlDocument();
+                doc.Load(DataPath);
+                Title = doc.DocumentElement.SelectSingleNode("/BlogEntry/Title").InnerText;
+                Date = DateTime.Parse(doc.DocumentElement.SelectSingleNode("/BlogEntry/Date").InnerText);
+                BodyContent = doc.DocumentElement.SelectSingleNode("/BlogEntry/BodyContent").InnerText;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("There was an issue reading the XML data file at: " + DataPath + ". Make sure your data file is formatted correctly.");
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+            
         }
 
         public void PopulateTemplate()
@@ -38,12 +48,12 @@ namespace BlogBuilder
                                       .Replace(Config.PLACEHOLDER_BODY, BodyContent);
 
             // Check if date-formated folder structure exists and create if needed
-            DatePath = Date.Year + "\\" + Date.Month + "\\" + Date.Day;  
-            Directory.CreateDirectory(Config.BlogDirectory + "\\" + DatePath);
+            DatePath = Date.Year + "/" + Date.Month + "/" + Date.Day;  
+            Directory.CreateDirectory(Config.BlogDirectory + "/" + DatePath);
 
             // Write the webpage file, create if doesn't exist and overwrite if it does
             WebpageFileName = Title.ToLower().Trim().Replace(" ", "-").Replace("/", "-").Replace("\\", "-").Replace(":", "").Replace("&", "-").Replace("$", "") + Config.WebpageFileType;
-            File.WriteAllText(Config.BlogDirectory + "\\" + DatePath + "\\" + WebpageFileName, webpageFile);
+            File.WriteAllText(Config.BlogDirectory + "/" + DatePath + "/" + WebpageFileName, webpageFile);
         }
     }
 }

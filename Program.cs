@@ -18,7 +18,7 @@ namespace BlogBuilder
             while (!exit)
             {
                 ShowOptions();
-                Console.WriteLine("\nWhat do you want to do:");
+                Console.WriteLine("\nSelect an option:");
                 string choice = Console.ReadLine().Trim();
 
                 switch (choice)
@@ -40,6 +40,8 @@ namespace BlogBuilder
                         break;
                 }
             }
+
+            Console.WriteLine("Exiting BlogBuilder.");
         }
 
         static void ShowOptions()
@@ -52,7 +54,13 @@ namespace BlogBuilder
 
         static void Refresh()
         {
-            // Foreach xml file in data directory, load the content and generate the html from template
+            // If refresh has already ran then empty the BlogEntries list to prevent duplications
+            if (RefreshRan)
+            {
+                BlogEntries.Clear();
+            }
+
+            // Foreach xml file in data directory, load the content and generate the webpage from template
             DirectoryInfo di = new DirectoryInfo(Config.DataDirectory);
             int articleCount = 0;
 
@@ -109,7 +117,7 @@ namespace BlogBuilder
                 // Create the index file 
                 File.WriteAllText(Config.BlogDirectory + "/" + "index" + Config.WebpageFileType, webpageFile);
 
-                Console.WriteLine("\tBlog index generated.");
+                Console.WriteLine("\tBLOG INDEX GENERATED.");
             }
         }
 
@@ -127,7 +135,7 @@ namespace BlogBuilder
                 // If an RSS XML exists then append new blog entries to the channel node
                 if (File.Exists(Config.RssFilePath + "/rss.xml"))
                 {
-                    Console.WriteLine("\t" + "RSS EXISTS.");
+                    Console.WriteLine("\t" + "RSS XML ALREADY EXISTS.");
                     XmlDocument doc = new XmlDocument();
                     doc.Load(Config.RssFilePath + "/rss.xml");
                     XmlNodeList rssTitles = doc.GetElementsByTagName("title");
@@ -151,7 +159,7 @@ namespace BlogBuilder
                             // Change relative img src's to absolute URLs
                             item.BodyContent.Replace("<img src=\"", "<img src=\"" + Config.Website);
 
-                            rssItems += "<title><![CDATA[" + item.Title + "]]></title>" +
+                            rssItems = "<title><![CDATA[" + item.Title + "]]></title>" +
                                             "<link>" + Config.Website + "/blog/" + item.DatePath.Replace("\\", "/") + "/" + item.WebpageFileName + "</link>" +
                                             "<description><![CDATA[" + item.BodyContent + "]]></description>" +
                                             "<guid isPermaLink=\"false\">" + Guid.NewGuid() + "</guid>" +
@@ -171,7 +179,7 @@ namespace BlogBuilder
                 // If an RSS XML doesn't exist then create one
                 else
                 {
-                    Console.WriteLine("\t" + "RSS DOESN'T EXIST.");
+                    Console.WriteLine("\t" + "RSS XML DOESN'T EXIST. CREATING FILE.");
                     // Define RSS XML structure
                     string rssBody = "<?xml version='1.0' encoding='UTF-8'?>\n" +
                                      "<rss version='2.0'\n" +
@@ -201,6 +209,7 @@ namespace BlogBuilder
                                         "<guid isPermaLink=\"false\">" + Guid.NewGuid() + "</guid>" +
                                         "<pubDate>" + item.Date.ToString("dd MMM yyyy HH:mm:ss") + " +0000" + "</pubDate>" +
                                     "</item>";
+                        Console.WriteLine("\t'" + item.Title + "' doesn't exist so is being created.");
                     }
 
                     // Add the RSS items to the RSS body 
@@ -209,7 +218,7 @@ namespace BlogBuilder
                     // Create the RSS file in the root of the blog directory 
                     File.WriteAllText(Config.BlogDirectory + "/" + "rss.xml", rssBody);
 
-                    Console.WriteLine("\tRSS XML Generated.");
+                    Console.WriteLine("\tRSS XML GENERATED.");
                 }
             }
         }
