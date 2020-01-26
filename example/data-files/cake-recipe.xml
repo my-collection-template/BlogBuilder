@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BlogEntry>
+	<Title>Tasty Cake Recipe</Title>
+	<Date>26-01-2020</Date>
+	<BodyContent>
+      <![CDATA[
+	  <p>This is a recipe for a tasty cake:</p>
+    <ul>
+      <li>Step 1 - Go to the shops</li>
+      <li>Step 2 - Buy cake</li>
+      <li>Step 3 - Go home</li>
+      <li>Step 4 - Eat cake</li>
+    </ul>
+		]]>
+	</BodyContent>
+</BlogEntry>

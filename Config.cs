@@ -25,9 +25,11 @@
         // RSS Feed Title
         public const string RssTitle = "";
         // RSS Language
-        public const string RssLanguage = "";
+        public const string RssLanguage = "en-uk";
         // RSS link to site's blog page
         public const string RssBlogLink = "";
+        // Folder Containing RSS XML
+        public const string RssFilePath = "";
         // RSS Description
         public const string RssDescription = "";
     }

@@ -1,8 +1,10 @@
-/data
-/web
+.vs/
+BlogBuilder.csproj.user
 /bin
 /obj
-Config.cs
+
+/data
+/web
 blog-entry-template.html
 blog-index-template.html
 blog-entry-template.php

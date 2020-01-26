@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss version='2.0'
+xmlns:atom="http://www.w3.org/2005/Atom"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+>
+<channel>
+<title>My RSS Feed</title>
+<language>en-uk</language>
+<link>www.test-blog.com/blog</link>
+<atom:link href="www.test-blog.com/rss.xml" rel="self" type="application/rss+xml" />
+<description>An example RSS feed</description>
+
+<item><title><![CDATA[Tasty Cake Recipe]]></title><link>www.test-blog.com/blog/2020/1/26/tasty-cake-recipe.html</link><description><![CDATA[
+	  <p>This is a recipe for a tasty cake:</p>
+    <ul>
+      <li>Step 1 - Go to the shops</li>
+      <li>Step 2 - Buy cake</li>
+      <li>Step 3 - Go home</li>
+      <li>Step 4 - Eat cake</li>
+    </ul>
+		]]></description><guid isPermaLink="false">e929a5e1-a22e-4af3-9de9-a2e37571f8ac</guid><pubDate>26 Jan 2020 00:00:00 +0000</pubDate></item><item><title><![CDATA[Random Ramble]]></title><link>www.test-blog.com/blog/2020/1/1/random-ramble.html</link><description><![CDATA[
+	  <p>Just a random ramble that deserves its own blog post.</p>
+		]]></description><guid isPermaLink="false">456b0d71-ebc4-40f0-a1a5-411bf5ebc5bc</guid><pubDate>01 Jan 2020 00:00:00 +0000</pubDate></item><item><title><![CDATA[CHRRRRRRRRRISSSSSSSTMAS!]]></title><link>www.test-blog.com/blog/2019/12/25/chrrrrrrrrrissssssstmas!.html</link><description><![CDATA[
+	  <p>Merry Christmas Everyone!</p>
+		]]></description><guid isPermaLink="false">d6e69738-711d-40c6-bc77-1ab93b5f9d55</guid><pubDate>25 Dec 2019 00:00:00 +0000</pubDate></item><item><title><![CDATA[It's my birthday!]]></title><link>www.test-blog.com/blog/1977/1/1/it's-my-birthday!.html</link><description><![CDATA[
+  <p>It's not actually my birthday, I just feel like celebrating something with a blog post.</p>
+		]]></description><guid isPermaLink="false">cbd0cd11-75f1-43fe-b57c-3894110e7f47</guid><pubDate>01 Jan 1977 00:00:00 +0000</pubDate></item>
+</channel>
+</rss>
