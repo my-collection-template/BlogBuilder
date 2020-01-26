@@ -1,5 +1,8 @@
 ﻿namespace BlogBuilder
 {
+    // NOTE: When running this example using Visual Studio, paths need to be proceeded by "../../../" as the program is being executed from "\bin\Debug\netcoreapp2.1"
+    // If you're running this using the dotnet cli (on any platform) then simply remove the "../../../" from the below file paths to make it work
+
     class Config
     {
         // The title placeholder tag to look for in the blog template
