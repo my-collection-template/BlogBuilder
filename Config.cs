@@ -10,9 +10,7 @@
         public const string PLACEHOLDER_BODY = "##BODY##";
         
         // Webpage file type, with preceding '.' - i.e. ".html"
-        public const string WebpageFileType = ".html";
-        // Link to the website your blog is hosted on
-        public const string Website = "";
+        public const string WebpageFileType = ".html";        
         // Path to the blog entry template file
         public const string BlogEntryTemplate = "";
         // Path to the blog index template file
@@ -22,6 +20,8 @@
         // Path to directory containing data files
         public const string DataDirectory = "";
 
+        // Link to the website your blog is hosted on
+        public const string Website = "";
         // RSS Feed Title
         public const string RssTitle = "";
         // RSS Language

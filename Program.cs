@@ -132,12 +132,12 @@ namespace BlogBuilder
             {
                 string rssItems = "";
 
-                // If an RSS XML exists then append new blog entries to the channel node
-                if (File.Exists(Config.RssFilePath + "/rss.xml"))
+                // If an RSS XML exists then append new blog entries to the channel node                
+                if (File.Exists(Config.RssFilePath))
                 {
                     Console.WriteLine("\t" + "RSS XML ALREADY EXISTS.");
                     XmlDocument doc = new XmlDocument();
-                    doc.Load(Config.RssFilePath + "/rss.xml");
+                    doc.Load(Config.RssFilePath);
                     XmlNodeList rssTitles = doc.GetElementsByTagName("title");
 
                     // Foreach blog entry, check if its title already exists in the rss feed and add a new item if it doesn't exist
@@ -173,7 +173,7 @@ namespace BlogBuilder
                         }
                     }
 
-                    doc.Save(Config.RssFilePath + "/rss.xml");
+                    doc.Save(Config.RssFilePath);
                 }
 
                 // If an RSS XML doesn't exist then create one
@@ -209,14 +209,14 @@ namespace BlogBuilder
                                         "<guid isPermaLink=\"false\">" + Guid.NewGuid() + "</guid>" +
                                         "<pubDate>" + item.Date.ToString("dd MMM yyyy HH:mm:ss") + " +0000" + "</pubDate>" +
                                     "</item>";
-                        Console.WriteLine("\t'" + item.Title + "' doesn't exist so is being created.");
+                        Console.WriteLine("\t'" + item.Title + "' - article doesn't exist so is being created.");
                     }
 
                     // Add the RSS items to the RSS body 
                     rssBody = rssBody.Replace("##RSS_ITEMS##", rssItems);
 
                     // Create the RSS file in the root of the blog directory 
-                    File.WriteAllText(Config.BlogDirectory + "/" + "rss.xml", rssBody);
+                    File.WriteAllText(Config.RssFilePath, rssBody);
 
                     Console.WriteLine("\tRSS XML GENERATED.");
                 }
